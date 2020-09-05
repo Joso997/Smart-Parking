@@ -10,7 +10,7 @@
     <b-row no-gutters>
       <b-col>
         <b-card-img-lazy
-          src="https://picsum.photos/400/400/?image=20"
+          :src="item[13]"
           alt="Image"
           class="rounded-0"
         ></b-card-img-lazy>

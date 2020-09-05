@@ -16,6 +16,14 @@
       >
         <b-form-input id="nested-street" v-model="form.title"></b-form-input>
       </b-form-group>
+      <b-form-group
+        label-cols-sm="3"
+        label="Url Slike:"
+        label-align-sm="right"
+        label-for="nested-street"
+      >
+        <b-form-input id="nested-street" v-model="form.url"></b-form-input>
+      </b-form-group>
       <b-row>
         <b-col>
           <b-form-group
@@ -218,7 +226,8 @@ export default {
           endReserve: 0,
           waitLease: 0,
           endLease: 0
-        }
+        },
+        url: ""
       }
     };
   },
@@ -247,7 +256,8 @@ export default {
           endReserve: Number(this.item[element][1]),
           waitLease: Number(this.item[element][2]),
           endLease: Number(this.item[element][3])
-        }
+        },
+        url: this.item[++element]
       };
       this.form = temp;
     }
@@ -285,7 +295,8 @@ export default {
               0,
               this.form.time.waitLease * 60,
               0
-            ]
+            ],
+            this.form.url
           )
           .send();
         this.$emit("submitted");
@@ -319,7 +330,8 @@ export default {
               0,
               this.form.time.waitLease * 60,
               0
-            ]
+            ],
+            this.form.url
           )
           .send();
         this.$emit("submitted");

@@ -41,6 +41,7 @@ contract ParkingBooks {
       address payable owner;
       bool enabled;
       ParkingTime time;
+      string url;
   }
 
   struct User{
@@ -129,13 +130,14 @@ contract ParkingBooks {
             deposit: 2 ether,
             owner: msg.sender,
             enabled: true,
-            time: _time
+            time: _time,
+            url: "https://www.njuskalo.hr/image-w920x690/nekretnine/garaza-split-blatine-19-m2-garaza-12m2-parking-mjesto-ispred-gar-slika-112312905.jpg"
         });
         count++;
         ownsCount[msg.sender]++;
     }
 
-    function store(string memory _title, int[] memory _location, uint[] memory _working_hours, bool _electric_support, bool _roof, bool _garage, uint _price, uint _deposit, bool _enabled, ParkingTime memory _time) public {
+    function store(string memory _title, int[] memory _location, uint[] memory _working_hours, bool _electric_support, bool _roof, bool _garage, uint _price, uint _deposit, bool _enabled, ParkingTime memory _time, string memory  _url) public {
         parkings[count] = Parking({
             id: count,
             title: _title,
@@ -149,13 +151,14 @@ contract ParkingBooks {
             deposit: _deposit * 1 wei,
             owner: msg.sender,
             enabled: _enabled,
-            time: _time
+            time: _time,
+            url: _url
         });
         count++;
         ownsCount[msg.sender]++;
     }
 
-    function update(uint id, string memory _title, int[] memory _location, uint[] memory _working_hours, bool _electric_support, bool _roof, bool _garage, uint _price, uint _deposit, ParkingTime memory _time) public isOwner(parkings[id].owner) {
+    function update(uint id, string memory _title, int[] memory _location, uint[] memory _working_hours, bool _electric_support, bool _roof, bool _garage, uint _price, uint _deposit, ParkingTime memory _time, string memory _url) public isOwner(parkings[id].owner) {
         parkings[id].title = _title;
         parkings[id].location = _location;
         parkings[id].working_hours = _working_hours;
@@ -165,6 +168,7 @@ contract ParkingBooks {
         parkings[id].price = _price * 1 wei;
         parkings[id].deposit = _deposit * 1 wei;
         parkings[id].time = _time;
+        parkings[id].url = _url;
     }
 
     function reserve(uint id) public {

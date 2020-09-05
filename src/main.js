@@ -9,7 +9,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import drizzleVuePlugin from "@drizzle/vue-plugin";
 import drizzleOptions from "./drizzleOptions";
 
-Vue.use(x5GMaps, "You Api Key");
+Vue.use(x5GMaps, "AIzaSyCsOj_U8Fy2RyadwkodCu0PJoXJIbpuC-U");
 Vue.use(drizzleVuePlugin, { store, drizzleOptions });
 // Install BootstrapVue
 Vue.use(BootstrapVue);
