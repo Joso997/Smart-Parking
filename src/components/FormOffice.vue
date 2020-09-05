@@ -290,12 +290,7 @@ export default {
               "ether"
             ),
             this.form.enabled,
-            [
-              this.form.time.waitReserve * 60,
-              0,
-              this.form.time.waitLease * 60,
-              0
-            ],
+            [this.form.time.waitReserve, 0, this.form.time.waitLease, 0],
             this.form.url
           )
           .send();
